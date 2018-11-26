@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
  class Home extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to CreateWallet!</Text>
-      </View>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            word: ''
+        }
+    } 
+    render() {
+        return (
+        <View style={styles.container}>
+            <Text style={styles.welcome}
+            onPress={() => {}}>Welcome to CreateWallet!</Text>
+        </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
