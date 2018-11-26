@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-class App extends Component<Props> {
+ class CreateWallet extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
+        <Text style={styles.welcome}>Welcome to CreateWallet!</Text>
       </View>
     );
   }
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default CreateWallet;
