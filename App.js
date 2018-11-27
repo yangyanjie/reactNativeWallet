@@ -1,25 +1,18 @@
-import React from "react";
-import { View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import Home from './src/views/Home/Home';
+import CreateWallet from './src/views/CreateWallet/CreateWallet';
 
-class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
-  }
-}
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: HomeScreen
-  }
+    screen: Home
+  },
+  CreateWallet: {
+    screen: CreateWallet
+  },
+
+},{
+  initialRouteName: "Home"
 });
 
 export default createAppContainer(AppNavigator);
