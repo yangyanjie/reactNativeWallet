@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+// import {DrawerNavigator, DrawerItems} from 'react-navigation';
+import {StyleSheet, Text, View, Image, Button,TouchableOpacity} from 'react-native';
+
 
  class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.handleDrawerTap = this.handleDrawerTap.bind(this);
+        this.state = {
+            word: ''
+        }
+    }
     static navigationOptions = {
         title: '钱包主页',
         headerStyle: {
@@ -14,26 +23,28 @@ import {StyleSheet, Text, View, Button} from 'react-native';
             fontSize: 18,
         },
         headerRight: (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#fff"
-            />
+            <TouchableOpacity
+            onPress={this.handleDrawerTap}>
+                <Image
+                    style={{width: 20, height: 20,marginRight: 14}}
+                    source={require('../../assets/images/wallet-index-drawer.png')}
+                    />
+            </TouchableOpacity>
+            
         ),
         headerLeft: (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#fff"
-            />
+            <TouchableOpacity
+            onPress={() => alert('This is a button!')}>
+                <Image
+                    style={{width: 10, height: 18,marginLeft: 14}}
+                    source={require('../../assets/images/wallet-index-back.png')}
+                    />
+            </TouchableOpacity>
           ),
-      };
-    constructor(props) {
-        super(props);
-        this.state = {
-            word: ''
-        }
-    } 
+    }; 
+    handleDrawerTap() {
+        alert(33333);
+    }
     render() {
         return (
         <View style={styles.container}>
