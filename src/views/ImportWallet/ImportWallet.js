@@ -1,22 +1,19 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View,Button} from 'react-native';
+import {
+    StyleSheet, 
+    Text, 
+    View
+} from 'react-native';
 
- class CreateWallet extends Component {
+ class ImportWallet extends Component {
   constructor(props) {
         super(props);
         this.state = {}
       }
   render() {
-    const {navigation} = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to CreateWallet!</Text>
-        <Button
-           title='open Drawer'
-           onPress={() => {
-               navigation.openDrawer();
-           }}
-           />
+        <Text style={styles.welcome}>Welcome to ImportWallet!</Text>
       </View>
     );
   }
@@ -36,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateWallet;
+export default ImportWallet;

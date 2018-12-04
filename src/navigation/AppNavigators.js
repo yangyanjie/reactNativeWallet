@@ -15,6 +15,11 @@ import {
 // 引入页面；
 import CreateWallet from '../views/CreateWallet/CreateWallet';
 import Home from '../views/Home/Home';
+import About from '../views/About/About';
+import ManageWallet from '../views/ManageWallet/ManageWallet';
+import ImportWallet from '../views/ImportWallet/ImportWallet';
+import Scan from '../views/Scan/Scan';
+
 
 // 创建抽屉navigator；
 const DrawerNav = createDrawerNavigator({
@@ -22,6 +27,46 @@ const DrawerNav = createDrawerNavigator({
         screen: CreateWallet,
         navigationOptions:{
         drawerLabel: '创建钱包',
+        drawerIcon: ({tintColor}) => (
+            <Image/>
+        )
+        }
+        
+    },
+    ImportWallet: {
+        screen: ImportWallet,
+        navigationOptions:{
+        drawerLabel: '导入钱包',
+        drawerIcon: ({tintColor}) => (
+            <Image/>
+        )
+        }
+        
+    },
+    ManageWallet: {
+        screen: ManageWallet,
+        navigationOptions:{
+        drawerLabel: '管理钱包',
+        drawerIcon: ({tintColor}) => (
+            <Image/>
+        )
+        }
+        
+    },
+    Scan: {
+        screen: Scan,
+        navigationOptions:{
+        drawerLabel: '少一少',
+        drawerIcon: ({tintColor}) => (
+            <Image/>
+        )
+        }
+        
+    },
+    About: {
+        screen: About,
+        navigationOptions:{
+        drawerLabel: '关于我们',
         drawerIcon: ({tintColor}) => (
             <Image/>
         )

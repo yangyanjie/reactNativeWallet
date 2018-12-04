@@ -7,7 +7,8 @@ import {
     Image,
     TouchableOpacity,
     FlatList,
-    RefreshControl
+    RefreshControl,
+    Button
 } from 'react-native';
 
  class Home extends Component {
@@ -39,6 +40,7 @@ import {
         
     }
     render() {
+        const {navigation} = this.props;
         return (
         <View style={styles.container}>
             <ImageBackground 
@@ -79,29 +81,34 @@ import {
                  </View>
             </ImageBackground>
             <View style={styles.coinsContainer}>
-            <FlatList
-                data={[
-                    {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},
-                    {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'}
-                ]}
-                renderItem={({item}) => this._renderItem(item)}
-                // 自定义loading 样式
-                refreshControl = {
-                    <RefreshControl 
-                        title={"loading"}
-                        colors={['red']}// andriod
-                        tintColor = {['#eee']} // ios
-                        titleColor= {'#eee'}// ios
-                        refreshing={this.state.isLoading}
-                        onRefresh={() => {
-                            this.loadingData();
-                        }}
+                <FlatList
+                    data={[
+                        {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},
+                        {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'}
+                    ]}
+                    renderItem={({item}) => this._renderItem(item)}
+                    // 自定义loading 样式
+                    refreshControl = {
+                        <RefreshControl 
+                            title={"loading"}
+                            colors={['red']}// andriod
+                            tintColor = {['#eee']} // ios
+                            titleColor= {'#eee'}// ios
+                            refreshing={this.state.isLoading}
+                            onRefresh={() => {
+                                this.loadingData();
+                            }}
 
+                        />
+                    }
+                    ItemSeparatorComponent={() => <View style={styles.separator}></View>}
                     />
-                }
-                ItemSeparatorComponent={() => <View style={styles.separator}></View>}
-                />
             </View>
+            <Button 
+                title='goToDrawer'
+                onPress={() => {
+                    navigation.navigate('DrawerNav',{title: 'Devios'})
+                }}/>
         </View>
         );
     }
