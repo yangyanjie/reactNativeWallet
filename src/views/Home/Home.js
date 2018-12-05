@@ -8,18 +8,17 @@ import {
     TouchableOpacity,
     FlatList,
     RefreshControl,
-    Button
+    Button,
 } from 'react-native';
 
  class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false
+            isLoading: false,
         }
     }
     _renderItem(item) {
-        console.log(item);
         return (
             <View style={styles.coinItem}>
                 <View style={styles.coinL}>
@@ -42,81 +41,117 @@ import {
     render() {
         const {navigation} = this.props;
         return (
-        <View style={styles.container}>
-            <ImageBackground 
-                style={styles.headerBack}
-                source={require('../../assets/images/wallet-index-headerbg.png')} >
-                <View style={styles.headerCommon}>
+            <View style={styles.container}>
+                <View style={styles.header}>
                     <Image 
-                        style={styles.headerImg}
-                        source={require('../../assets/images/header-img-1.png')}
+                        style={styles.back}
+                        source={require('../../assets/images/wallet-index-back.png')}
+                    />
+                    <Text style={styles.headerTxt}>钱包主页</Text>
+                    <Image 
+                        style={styles.drawerBtn}
+                        source={require('../../assets/images/wallet-index-drawer.png')}
                     />
                 </View>
-                 <View style={styles.headerText}>
-                    <Text style={styles.walletName}>ZRS1818</Text>
-                    <Text style={styles.backBtn}>请备份</Text>
-                 </View>
-                 <View style={styles.headerQr}>
-                 <Text style={styles.headerAddr}>0xf8c0...44E9dC6cE2</Text>
-                    <TouchableOpacity>
+                <ImageBackground 
+                    style={styles.headerBack}
+                    source={require('../../assets/images/wallet-index-headerbg.png')} >
+                    <View style={styles.headerCommon}>
                         <Image 
-                            style={styles.qrImg}
-                            source={require('../../assets/images/wallet-index-qrcode.png')}
+                            style={styles.headerImg}
+                            source={require('../../assets/images/header-img-1.png')}
                         />
-                    </TouchableOpacity>
-                 </View>
-                 <View style={styles.walletTap}>
-                    <TouchableOpacity style={styles.tabItem}>
-                        <Image
-                        style={styles.tapImg} 
-                        source={require('../../assets/images/transfer-accounts.png')}/>
-                        <Text style={styles.tabTxt}>转账</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.tabItem}>
-                         <Image
-                         style={styles.tapImg} 
-                         source={require('../../assets/images/receivables.png')}/>
-                         <Text style={styles.tabTxt}>收钱</Text>
-                     </TouchableOpacity>
-                 </View>
-            </ImageBackground>
-            <View style={styles.coinsContainer}>
-                <FlatList
-                    data={[
-                        {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},
-                        {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'}
-                    ]}
-                    renderItem={({item}) => this._renderItem(item)}
-                    // 自定义loading 样式
-                    refreshControl = {
-                        <RefreshControl 
-                            title={"loading"}
-                            colors={['red']}// andriod
-                            tintColor = {['#eee']} // ios
-                            titleColor= {'#eee'}// ios
-                            refreshing={this.state.isLoading}
-                            onRefresh={() => {
-                                this.loadingData();
-                            }}
+                    </View>
+                    <View style={styles.headerText}>
+                        <Text style={styles.walletName}>ZRS1818</Text>
+                        <Text style={styles.backBtn}>请备份</Text>
+                    </View>
+                    <View style={styles.headerQr}>
+                    <Text style={styles.headerAddr}>0xf8c0...44E9dC6cE2</Text>
+                        <TouchableOpacity>
+                            <Image 
+                                style={styles.qrImg}
+                                source={require('../../assets/images/wallet-index-qrcode.png')}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.walletTap}>
+                        <TouchableOpacity style={styles.tabItem}>
+                            <Image
+                            style={styles.tapImg} 
+                            source={require('../../assets/images/transfer-accounts.png')}/>
+                            <Text style={styles.tabTxt}>转账</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.tabItem}>
+                            <Image
+                            style={styles.tapImg} 
+                            source={require('../../assets/images/receivables.png')}/>
+                            <Text style={styles.tabTxt}>收钱</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+                <View style={styles.coinsContainer}>
+                    <FlatList
+                        data={[
+                            {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},
+                            {coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'},{coinImg: require('../../assets/images/coin-GFC.png'),coinTxt: 'GFC',coinNum: '16.978'}
+                        ]}
+                        renderItem={({item}) => this._renderItem(item)}
+                        // 自定义loading 样式
+                        refreshControl = {
+                            <RefreshControl 
+                                title={"loading"}
+                                colors={['red']}// andriod
+                                tintColor = {['#eee']} // ios
+                                titleColor= {'#eee'}// ios
+                                refreshing={this.state.isLoading}
+                                onRefresh={() => {
+                                    this.loadingData();
+                                }}
 
+                            />
+                        }
+                        ItemSeparatorComponent={() => <View style={styles.separator}></View>}
                         />
-                    }
-                    ItemSeparatorComponent={() => <View style={styles.separator}></View>}
-                    />
+                </View>
+                <Button 
+                    title='goToDrawer'
+                    onPress={() => {
+                        this.setModalVisible(true);
+                    }}/>
             </View>
-            <Button 
-                title='goToDrawer'
-                onPress={() => {
-                    navigation.navigate('DrawerNav',{title: 'Devios'})
-                }}/>
-        </View>
+           
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 30,
         flex: 1,
+    },
+    header: {
+        paddingLeft: 14,
+        paddingRight: 14,
+        width: '100%',
+        height: 52,
+        backgroundColor: '#2C333A',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    back: {
+        width: 20,
+        height: 20
+    },
+    headerTxt: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: '#fff'
+    },
+    drawerBtn: {
+        width: 20,
+        height: 20
     },
     headerBack: {
         // flex: 1,

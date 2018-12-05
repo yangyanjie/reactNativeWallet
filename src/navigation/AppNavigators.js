@@ -91,49 +91,48 @@ const DrawerNav = createDrawerNavigator({
 const StackNavigator = createStackNavigator({
     Home: {
         screen: Home,
-        navigationOptions: (props) => {
-            const {navigation} = props;
-            const {state,setParams} = navigation;
-            const {params} = state;
-            return {
-                title: '钱包主页',
-                headerStyle: {
-                    height: 52,
-                    backgroundColor: '#2C333A',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                },
-                headerRight: (
-                    <TouchableOpacity
-                    onPress={() => {
-                    //    console.log(11111);
-                    //    navigation.openDrawer();
-                    //    // Linking.openURL('https://www.baidu.com/');
-                    //     console.log(22222);
-                    }}>
-                        <Image
-                            style={{width: 20, height: 20,marginRight: 14}}
-                            source={require('../assets/images/wallet-index-drawer.png')}
-                            />
-                    </TouchableOpacity>
-                    
-                ),
-                headerLeft: (
-                    <TouchableOpacity
-                    onPress={() => {}}>
-                        <Image
-                            style={{width: 10, height: 18,marginLeft: 14}}
-                            source={require('../assets/images/wallet-index-back.png')}
-                            />
-                    </TouchableOpacity>
-                  )
-
-
-            }
+        navigationOptions: {
+            header: null
         }
+        // navigationOptions: (props) => {
+        //     const {navigation} = props;
+        //     const {state,setParams} = navigation;
+        //     const {params} = state;
+        //     return {
+        //         title: '钱包主页',
+        //         headerStyle: {
+        //             height: 52,
+        //             backgroundColor: '#2C333A',
+        //         },
+        //         headerTintColor: '#fff',
+        //         headerTitleStyle: {
+        //             fontWeight: 'bold',
+        //             fontSize: 18,
+        //         },
+        //         headerRight: (
+        //             <TouchableOpacity
+        //             onPress={() => {
+        //             }}>
+        //                 <Image
+        //                     style={{width: 20, height: 20,marginRight: 14}}
+        //                     source={require('../assets/images/wallet-index-drawer.png')}
+        //                     />
+        //             </TouchableOpacity>
+                    
+        //         ),
+        //         headerLeft: (
+        //             <TouchableOpacity
+        //             onPress={() => {}}>
+        //                 <Image
+        //                     style={{width: 10, height: 18,marginLeft: 14}}
+        //                     source={require('../assets/images/wallet-index-back.png')}
+        //                     />
+        //             </TouchableOpacity>
+        //           )
+
+
+        //     }
+        // }
     },
     DrawerNav: {
         screen: DrawerNav,
