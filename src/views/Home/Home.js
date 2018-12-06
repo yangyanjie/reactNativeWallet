@@ -10,12 +10,14 @@ import {
     RefreshControl,
     Button,
 } from 'react-native';
+import SideMenu from 'react-native-side-menu';
 
  class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: false,
+            isOpen: false
         }
     }
     _renderItem(item) {
@@ -38,20 +40,58 @@ import {
         })
         
     }
+    
     render() {
         const {navigation} = this.props;
+        const menu = <View style={styles.menuContainer}>
+                        <TouchableOpacity 
+                            style={styles.menuItem}
+                            onPress={() => {
+                                navigation.navigate('CreateWallet');
+                            }}
+                        >
+                            <Image
+                                style={styles.itemTabImg}
+                                source={require('../../assets/images/drawer-wallet-import.png')}
+                            />
+                            <Text style={styles.itemTabTxt}>导入钱包</Text>
+                        </TouchableOpacity>
+                    </View>;
         return (
-            <View style={styles.container}>
+            <SideMenu
+                menu={menu}
+                isOpen={this.state.isOpen}                     //抽屉内的组件
+                openMenuOffset={210}     //抽屉的宽度
+                dgeHitWidth={60}              //距离屏幕多少距离可以滑出抽屉,默认60
+                disableGestures={false}        //是否禁用手势滑动抽屉 默认false 允许手势滑动
+                menuPosition={'right'}
+                // style={{backgroundColor: '#000000',paddingTop: 100}}
+            >
+                <View style={styles.container}>
                 <View style={styles.header}>
-                    <Image 
-                        style={styles.back}
-                        source={require('../../assets/images/wallet-index-back.png')}
-                    />
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('CreateWallet')
+                        }}
+                    >
+                        <Image 
+                            style={styles.back}
+                            source={require('../../assets/images/wallet-index-back.png')}
+                        />
+                    </TouchableOpacity>
                     <Text style={styles.headerTxt}>钱包主页</Text>
-                    <Image 
-                        style={styles.drawerBtn}
-                        source={require('../../assets/images/wallet-index-drawer.png')}
-                    />
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.setState({
+                                isOpen: true
+                            })
+                        }}
+                    >
+                        <Image 
+                            style={styles.drawerBtn}
+                            source={require('../../assets/images/wallet-index-drawer.png')}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <ImageBackground 
                     style={styles.headerBack}
@@ -114,13 +154,8 @@ import {
                         ItemSeparatorComponent={() => <View style={styles.separator}></View>}
                         />
                 </View>
-                <Button 
-                    title='goToDrawer'
-                    onPress={() => {
-                        this.setModalVisible(true);
-                    }}/>
             </View>
-           
+           </SideMenu>
         );
     }
 }
@@ -308,6 +343,27 @@ const styles = StyleSheet.create({
         color: '#222',
         lineHeight: 42,
         // textAlign: 'center',
+    },
+    menuContainer: {
+       paddingTop: 72,
+    },
+    menuItem: {
+        paddingLeft: 30,
+        width: '100%',
+        height:50,
+        backgroundColor: 'red',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    itemTabImg: {
+        width: 20,
+        height: 20
+    },
+    itemTabTxt: {
+        paddingLeft: 10,
+        fontSize: 14,
+        fontWeight: '400',
+        color: '#8D979F'
     }
   
 });
