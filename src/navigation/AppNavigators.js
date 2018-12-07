@@ -21,73 +21,6 @@ import ImportWallet from '../views/ImportWallet/ImportWallet';
 import Scan from '../views/Scan/Scan';
 
 
-// 创建抽屉navigator；
-const DrawerNav = createDrawerNavigator({
-    CreateWallet: {
-        screen: CreateWallet,
-        navigationOptions:{
-        drawerLabel: '创建钱包',
-        drawerIcon: ({tintColor}) => (
-            <Image/>
-        )
-        }
-        
-    },
-    ImportWallet: {
-        screen: ImportWallet,
-        navigationOptions:{
-        drawerLabel: '导入钱包',
-        drawerIcon: ({tintColor}) => (
-            <Image/>
-        )
-        }
-        
-    },
-    ManageWallet: {
-        screen: ManageWallet,
-        navigationOptions:{
-        drawerLabel: '管理钱包',
-        drawerIcon: ({tintColor}) => (
-            <Image/>
-        )
-        }
-        
-    },
-    Scan: {
-        screen: Scan,
-        navigationOptions:{
-        drawerLabel: '少一少',
-        drawerIcon: ({tintColor}) => (
-            <Image/>
-        )
-        }
-        
-    },
-    About: {
-        screen: About,
-        navigationOptions:{
-        drawerLabel: '关于我们',
-        drawerIcon: ({tintColor}) => (
-            <Image/>
-        )
-        }
-        
-    },
-    Home: {
-        screen: CreateWallet,
-    }
-    },{
-    // 自定义抽屉；
-    contentComponent: (props) => (
-        <ScrollView style={{backgroundColor: 'red',flex:1}}>
-            <SafeAreaView forceInset={{top:'always',horizontal: 'never'}}>
-                <DrawerItems
-                {...props}
-                />
-            </SafeAreaView>
-        </ScrollView>
-    )
-})
 const StackNavigator = createStackNavigator({
     Home: {
         screen: Home,
@@ -100,13 +33,51 @@ const StackNavigator = createStackNavigator({
         navigationOptions: {
             header: null
         }
+    },
+    ImportWallet: {
+        screen: ImportWallet,
+        navigationOptions: {
+            header: null
+        }
+    },
+    ManageWallet: {
+        screen: ManageWallet,
+        navigationOptions:(props) =>  {
+            const {navigation} = props;
+            return {
+                title: '管理钱包',
+                headerLeft: (
+                    <TouchableOpacity
+                        onPress={() => {
+                            // 页面跳转
+                           //navigation.back();
+                        }}>
+                        <Image 
+                            style={{marginLeft:16, width: 20,height: 20}}
+                            source={require('../assets/images/back-left.png')}/>
+                    </TouchableOpacity>
+                
+                ),
+                headerTintColor: '#222',
+                headerTitleStyle: {
+                    fontSize:17,
+                    fontWeight: 'bold',
+                },
+            }
+        }
+    },
+    Scan: {
+        screen: Scan,
+        navigationOptions: {
+            header: null
+        }
+    },
+    About: {
+        screen: About,
+        navigationOptions: {
+            title: '管理钱包'
+        }
     }
-    // DrawerNav: {
-    //     screen: DrawerNav,
-    //     navigationOptions: {
-    //       title: 'This is DrawerNavigator'
-    //     }
-    //   }
     
 })
 

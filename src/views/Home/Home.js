@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     FlatList,
     RefreshControl,
-    Button,
+    TouchableHighlight
 } from 'react-native';
 import SideMenu from 'react-native-side-menu';
 
@@ -44,18 +44,70 @@ import SideMenu from 'react-native-side-menu';
     render() {
         const {navigation} = this.props;
         const menu = <View style={styles.menuContainer}>
-                        <TouchableOpacity 
-                            style={styles.menuItem}
+                        <TouchableHighlight 
                             onPress={() => {
-                                navigation.navigate('CreateWallet');
+                                navigation.navigate('CreateWallet')
                             }}
+                            activeOpacity={0.8}
+                            underlayColor={'#EDF1F0'}
                         >
-                            <Image
-                                style={styles.itemTabImg}
-                                source={require('../../assets/images/drawer-wallet-import.png')}
-                            />
-                            <Text style={styles.itemTabTxt}>导入钱包</Text>
-                        </TouchableOpacity>
+                            <View 
+                            style={styles.menuItem}>
+                                <Image
+                                    style={styles.itemTabImg}
+                                    source={require('../../assets/images/drawer-wallet-import.png')}
+                                />
+                                <Text style={styles.itemTabTxt}>导入钱包</Text>
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight 
+                            onPress={() => {
+                                navigation.navigate('ManageWallet')
+                            }}
+                            activeOpacity={0.8}
+                            underlayColor={'#EDF1F0'}
+                        >
+                            <View 
+                            style={styles.menuItem}>
+                                <Image
+                                    style={styles.itemTabImg}
+                                    source={require('../../assets/images/drawer-wallet-manage.png')}
+                                />
+                                <Text style={styles.itemTabTxt}>管理钱包</Text>
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight 
+                            onPress={() => {
+                                navigation.navigate('CreateWallet')
+                            }}
+                            activeOpacity={0.8}
+                            underlayColor={'#EDF1F0'}
+                        >
+                            <View 
+                            style={styles.menuItem}>
+                                <Image
+                                    style={styles.itemTabImg}
+                                    source={require('../../assets/images/drawer-scan.png')}
+                                />
+                                <Text style={styles.itemTabTxt}>扫一扫</Text>
+                            </View>
+                        </TouchableHighlight>
+                        <TouchableHighlight 
+                            onPress={() => {
+                                navigation.navigate('CreateWallet')
+                            }}
+                            activeOpacity={0.8}
+                            underlayColor={'#EDF1F0'}
+                        >
+                            <View 
+                            style={styles.menuItem}>
+                                <Image
+                                    style={styles.itemTabImg}
+                                    source={require('../../assets/images/drawer-about.png')}
+                                />
+                                <Text style={styles.itemTabTxt}>关于我们</Text>
+                            </View>
+                        </TouchableHighlight>
                     </View>;
         return (
             <SideMenu
@@ -351,7 +403,7 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         width: '100%',
         height:50,
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         flexDirection: 'row',
         alignItems: 'center'
     },
