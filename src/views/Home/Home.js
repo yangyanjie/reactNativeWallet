@@ -325,6 +325,7 @@ const styles = StyleSheet.create({
         shadowOffset:{h:5,w:2},
         shadowRadius:3,
         shadowOpacity:0.5,
+        elevation: 4
     },
     tabItem: {
        width: 44,
