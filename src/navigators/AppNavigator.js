@@ -10,7 +10,7 @@ import {
 // 引入页面；
 import CreateWallet from '../views/CreateWallet/CreateWallet';
 //import Home from '../views/Home/Home';
-import About from '../views/About/About';
+import About from '../views/About';
 import ManageWallet from '../views/ManageWallet/ManageWallet';
 import ImportWallet from '../views/ImportWallet/ImportWallet';
 import Scan from '../views/Scan/Scan';
@@ -21,6 +21,7 @@ import HomePage from '../views/HomePage';
 
 
 const StackNavigator = createStackNavigator({
+    
     WelcomePage: {
         screen: WelcomePage
     },
@@ -33,6 +34,10 @@ const StackNavigator = createStackNavigator({
     ImportWallet: {
         screen: ImportWallet
     },
+    About: {
+        screen: About,
+    },
+    
     ManageWallet: {
         screen: ManageWallet,
         navigationOptions:(props) =>  {
@@ -63,12 +68,7 @@ const StackNavigator = createStackNavigator({
         screen: Scan,
        
     },
-    About: {
-        screen: About,
-        navigationOptions: {
-            title: '管理钱包'
-        }
-    }
+    
     
 },{
     defaultNavigationOptions: {

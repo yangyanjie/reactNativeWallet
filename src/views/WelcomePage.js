@@ -4,9 +4,9 @@ import {
     View,
     Text
 } from 'react-native';
-import NavigatorUtil from '../util/NavigatorUtil';
-// import ThemeDao from '../expand/dao/ThemeDao';
+
 import SplashScreen from 'react-native-splash-screen';
+import NavigatorUtil from '../util/NavigatorUtil';
 
 class WelcomePage extends Component {
     constructor(props) {
@@ -16,7 +16,6 @@ class WelcomePage extends Component {
         this.timer = setTimeout(() => {
             SplashScreen.hide();
             NavigatorUtil.resetToHomePage({
-                // theme: this.theme,
                 navigation: this.props.navigation
             })
         }, 500);
