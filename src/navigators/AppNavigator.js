@@ -1,44 +1,37 @@
 import {
     createStackNavigator,
-    createDrawerNavigator,
     createAppContainer,
-    SafeAreaView,
-    DrawerItems
 } from 'react-navigation';
-import React, {Component} from 'react';
+// import React, {Component} from 'react';
 import {
     Image,
-    Linking,
     TouchableOpacity,
-    ScrollView
 } from 'react-native';
 // 引入页面；
 import CreateWallet from '../views/CreateWallet/CreateWallet';
-import Home from '../views/Home/Home';
+//import Home from '../views/Home/Home';
 import About from '../views/About/About';
 import ManageWallet from '../views/ManageWallet/ManageWallet';
 import ImportWallet from '../views/ImportWallet/ImportWallet';
 import Scan from '../views/Scan/Scan';
+import WelcomePage from '../views/WelcomePage';
+import HomePage from '../views/HomePage';
+
+
 
 
 const StackNavigator = createStackNavigator({
-    Home: {
-        screen: Home,
-        navigationOptions: {
-            header: null
-        }
+    WelcomePage: {
+        screen: WelcomePage
+    },
+    HomePage: {
+        screen: HomePage
     },
     CreateWallet: {
-        screen: CreateWallet,
-        navigationOptions: {
-            header: null
-        }
+        screen: CreateWallet
     },
     ImportWallet: {
-        screen: ImportWallet,
-        navigationOptions: {
-            header: null
-        }
+        screen: ImportWallet
     },
     ManageWallet: {
         screen: ManageWallet,
@@ -68,9 +61,7 @@ const StackNavigator = createStackNavigator({
     },
     Scan: {
         screen: Scan,
-        navigationOptions: {
-            header: null
-        }
+       
     },
     About: {
         screen: About,
@@ -79,6 +70,10 @@ const StackNavigator = createStackNavigator({
         }
     }
     
+},{
+    defaultNavigationOptions: {
+        header:null
+    }
 })
 
 export const AppNavigator =  createAppContainer(StackNavigator);
