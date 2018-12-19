@@ -8,7 +8,8 @@ import {
     View,
     Text,
     FlatList,
-    RefreshControl
+    RefreshControl,
+    Alert
 } from 'react-native';
 import SideMenu from 'react-native-side-menu';
 
@@ -27,9 +28,22 @@ import {ThemeFlags} from '../../static/styles/ThemeFactory';
         }
         console.log(this.state.theme);
     }
+    openAlert () {
+        Alert.alert(
+          'Alert Title',
+          'My Alert Msg',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          { cancelable: false }
+        )
+      }
     renderLeftButton() {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => this.openAlert()}
+            >
                 <Image 
                     style={styles.image}
                     source={require('../../static/images/wallet-index-back.png')}/>

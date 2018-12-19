@@ -45,7 +45,15 @@ startAnimation = () => {
   ).start(() => this.startAnimation());
 };
 onBarCodeRead = (result) => {
-  
+  Alert.alert(
+    'Alert Title',
+    result,
+    [
+      {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    ],
+    { cancelable: false }
+  )
 };
 
   render() {
