@@ -13,10 +13,11 @@ import CreateWallet from '../views/CreateWallet/CreateWallet';
 import About from '../views/About';
 import ManageWallet from '../views/ManageWallet/ManageWallet';
 import ImportWallet from '../views/ImportWallet/ImportWallet';
-import Scan from '../views/Scan/Scan';
+
 import WelcomePage from '../views/WelcomePage';
 import HomePage from '../views/HomePage';
-
+import Scan from '../views/Scan';
+import ReceiveAccount from '../views/ReceiveAccount';
 
 
 
@@ -36,6 +37,9 @@ const StackNavigator = createStackNavigator({
     },
     About: {
         screen: About,
+    },
+    ReceiveAccount: {
+        screen: ReceiveAccount,
     },
     
     ManageWallet: {
