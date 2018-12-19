@@ -44,29 +44,7 @@ const StackNavigator = createStackNavigator({
     
     ManageWallet: {
         screen: ManageWallet,
-        navigationOptions:(props) =>  {
-            const {navigation} = props;
-            return {
-                title: '管理钱包',
-                headerLeft: (
-                    <TouchableOpacity
-                        onPress={() => {
-                            // 页面跳转
-                           //navigation.back();
-                        }}>
-                        <Image 
-                            style={{marginLeft:16, width: 20,height: 20}}
-                            source={require('../assets/images/back-left.png')}/>
-                    </TouchableOpacity>
-                
-                ),
-                headerTintColor: '#222',
-                headerTitleStyle: {
-                    fontSize:17,
-                    fontWeight: 'bold',
-                },
-            }
-        }
+        
     },
     Scan: {
         screen: Scan,

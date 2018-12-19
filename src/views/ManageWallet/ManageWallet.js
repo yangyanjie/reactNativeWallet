@@ -38,13 +38,13 @@ import {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList
+        {/* <FlatList
           data={[
               {headerImg: require('../../assets/images/header-img-1.png'),coinTxt: 'GFC',account: '我是小钱包',backup: 0,banlance: '16.978'},
               {headerImg: require('../../assets/images/header-img-1.png'),coinTxt: 'GFC',account: '我是小钱包',backup: 0,banlance: '16.978'},
               {headerImg: require('../../assets/images/header-img-1.png'),coinTxt: 'GFC',account: '我是小钱包',backup: 0,banlance: '16.978'},
           ]}
-          renderItem={({item}) => this._renderItem(item)}
+          //renderItem={({item}) => this._renderItem(item)}
           // // 自定义loading 样式
           // refreshControl = {
           //     <RefreshControl 
@@ -60,7 +60,7 @@ import {
           //     />
           // }
           // ItemSeparatorComponent={() => <View style={styles.separator}></View>}
-          />
+          /> */}
       </View>
     );
   }
