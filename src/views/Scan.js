@@ -6,7 +6,8 @@ import {
     Text, 
     View,
     Animated,
-    Easing
+    Easing,
+    Alert
 } from 'react-native';
 import { RNCamera } from 'react-native-camera'; 
 import SafeAreaViewPlus from '../common/SafeAreaViewPlus';
@@ -45,9 +46,10 @@ startAnimation = () => {
   ).start(() => this.startAnimation());
 };
 onBarCodeRead = (result) => {
+    console.log(1111111111+JSON.stringify(result));
   Alert.alert(
     'Alert Title',
-    result,
+    JSON.stringify(result),
     [
       {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
       {text: 'OK', onPress: () => console.log('OK Pressed')},
@@ -120,7 +122,7 @@ rectangleContainer: {
 },
 rectangle: {
     height: 200,
-    width: 200,
+    width: '100%',
     borderWidth: 1,
     borderColor: '#00FF00',
     backgroundColor: 'transparent'

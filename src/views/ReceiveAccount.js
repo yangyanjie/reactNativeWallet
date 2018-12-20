@@ -20,7 +20,7 @@ import NavigationBar from '../common/NavigationBar';
             id: this.props.navigation.state.params.id,
             theme: new ThemeColor().getHeaderTheme(ThemeFlags.Black,ThemeFlags.White),
         }
-        //console.log(this.props.navigation.state.params.id);
+
     }
     renderLeftButton() {
         return (
@@ -32,6 +32,12 @@ import NavigationBar from '../common/NavigationBar';
         )
     }
   render() {
+      let qrCode = 
+        <QRCode
+            value={this.state.id}
+            size={150}
+            bgColor='#000'
+            fgColor='#fff'/>
     let navigationBar = 
         <NavigationBar
             title={'收款码'}
@@ -48,11 +54,7 @@ import NavigationBar from '../common/NavigationBar';
                 <Text style={styles.walletName}>ZRS1818</Text>
                 <Text style={styles.address}>11111111111111111111111111</Text>
                 <View style={styles.qrImg}>
-                    <QRCode
-                        value={this.state.id}
-                        size={150}
-                        bgColor='#000'
-                        fgColor='#fff'/>
+                    {qrCode}
                 </View>
                 
                 <TouchableOpacity
