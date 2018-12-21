@@ -5,7 +5,8 @@ import {
     View,
     TouchableOpacity,
     Image,
-    Button
+    Button,
+    Clipboard
 } from 'react-native';
 import QRCode from 'react-native-qrcode';
 
@@ -19,6 +20,8 @@ import NavigationBar from '../common/NavigationBar';
         this.state = {
             id: this.props.navigation.state.params.id,
             theme: new ThemeColor().getHeaderTheme(ThemeFlags.Black,ThemeFlags.White),
+            isCopy: false,
+            content: this.props.navigation.state.params.id
         }
 
     }
@@ -30,6 +33,15 @@ import NavigationBar from '../common/NavigationBar';
                     source={require('../../static/images/wallet-index-back.png')}/>
             </TouchableOpacity>
         )
+    }
+    handleClipboard() {
+        Clipboard.setString(this.state.id);
+        this.setState({
+            isCopy: true
+        })
+        Clipboard.getString().then((text) => {
+        }).then((err) => {
+        }) 
     }
   render() {
       let qrCode = 
@@ -58,10 +70,8 @@ import NavigationBar from '../common/NavigationBar';
                 </View>
                 
                 <TouchableOpacity
-                    style={styles.defaultBtn}
-                    onPress={() => {
-                        
-                    }}
+                    style={this.state.isCopy?styles.activeBtn:styles.defaultBtn}
+                    onPress={this.handleClipboard.bind(this)}
                 >
                     <Text style={{color: '#fff'}}>复制钱包地址</Text>
                 </TouchableOpacity>
@@ -136,7 +146,41 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         //color: '#fff'
+    },
+    activeBtn: {
+        marginTop: 20,
+        width: 270,
+        height: 44,
+        borderRadius: 5,
+        backgroundColor:'#E0E3E2',
+        justifyContent: 'center',
+        alignItems: 'center',
+        //color: '#fff'
     }
+
 });
 
 export default ReceiveAccount;
+
+
+
+
+
+
+
+
+
+
+/****
+ * 每一个女孩一生都会遇到两个男孩，一个惊艳了时光，一个温柔了岁月。
+ * 南乔遇见林一阳，是她命定的劫数，而遇见季子瑜便是她的救赎。
+ * 遇见你，我便输了所有；
+ * 南乔站在熙熙攘攘的街道上，看着对面学校熠熠生辉的几个大字-‘K市一高’，心里有写激动，想到这个地方就是自己未来三年将要呆的地方，心里又有些期待。南乔小心的躲避着过往的车辆，等到顺利到达马路对面的时候背上已经冒出了冷汗，心想：‘下次打死也不能这样了，太危险了，吓死我了’。
+ * 看着旁边拎着大包小包的送孩子入学的家长，南乔想起了自己的爸爸，早上很早都来到这，把东西放下就走了，心里不免有些失望。她漂亮的眸子瞬间失去了光彩，连浅浅的笑都
+ * 
+ * 
+ * 
+ * 
+ * 高中第一天，我进班的比较晚，教师的前面坐满了人，又看到老同学小鱼在向我打招呼，看到小鱼旁边还有空位置，就坐到了她旁边
+ * 
+ */
